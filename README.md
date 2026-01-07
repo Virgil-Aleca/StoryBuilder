@@ -1,86 +1,10 @@
-﻿# StoryBuilder
+# Student 2 – STT + TTS + Keywords (cum folosiți codul meu)
 
-Student 2 – STT + TTS + Keywords (cum folosiți codul meu)
-Ce am eu în proiect
+## Ce am eu în proiect
+Eu am fișierul: `student2_services.py`.
 
-Eu am fișierul: student2_services.py
+În el există clasa `Student2Services` care face 3 lucruri:
+1. **STT**: ascultă de la microfon și îți dă text  
+2. **TTS**: citește un text cu voce  
+3. **Keywords/Query**: din text scoate un query simplu pentru căutare (ex: `dragon rosu`)
 
-În el există clasa Student2Services care face 3 lucruri:
-
-STT: ascultă de la microfon și îți dă text
-
-TTS: citește un text cu voce
-
-Keywords/Query: din text scoate un query simplu pentru căutare (ex: “dragon rosu”)
-
-Cum îl folosești (copy-paste)
-
-În orice fișier de-al vostru (ex: main_gui.py) faceți:
-
-from student2_services import Student2Services
-
-svc = Student2Services(language="ro-RO")
-
-text = svc.listen_sentence()
-print("Am recunoscut:", text)
-
-query = svc.make_query(text)
-print("Query:", query)
-
-svc.speak(text)
-
-Ce întoarce fiecare funcție (important)
-listen_sentence()
-
-Returnează: string cu propoziția (ex: "A fost odata un dragon rosu")
-
-Sau: None dacă:
-
-nu ai vorbit (timeout)
-
-nu s-a înțeles
-
-nu ai internet (Google STT)
-
-Deci mereu verificați:
-
-if text is None:
-    # nu facem nimic / afișăm mesaj în GUI
-
-make_query(text)
-
-Input: text (string)
-
-Output: query (string) – fără diacritice, mai safe pentru API-uri
-
-Exemplu:
-
-input: "A fost odată un dragon roșu"
-
-output: "dragon rosu"
-
-speak(text)
-
-Citește textul (offline) cu pyttsx3
-
-Dacă text e gol/None, nu face nimic.
-
-Dependențe (ce trebuie instalat ca să meargă)
-
-Instalare simplă:
-
-pip install -r requirements.txt
-
-
-Dacă PyAudio nu merge pe Windows:
-
-pip install pipwin
-pipwin install pyaudio
-
-Observații rapide
-
-STT (Google) cere internet.
-
-TTS (pyttsx3) e offline.
-
-Query-ul e normalizat (fără diacritice) ca să nu apară bug-uri.
